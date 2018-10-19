@@ -2,17 +2,14 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 # Create your views here.
 def index(request):
-    if request.user.is_authenticated():
-        return render(request,'index/index_authenticated.html')
-    else:
-        return render(request,'index/index.html')
+    return render(request,'index/index.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -35,4 +32,15 @@ def sample_view(request):
 
 
 def add_articles(request):
-    return render(request,'articles/add_article.html')
+    if request.user.is_authenticated():
+        return render(request,'articles/add_article.html')
+    else:
+        return HttpResponseRedirect('/login')
+
+
+def shell(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('http://127.0.0.1:3000')
+    else:
+        return HttpResponseRedirect('/login')
+   
