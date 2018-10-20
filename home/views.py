@@ -27,6 +27,12 @@ def signup(request):
     return render(request, 'auth/signup.html', {'form': form})
 
 
+
+def profile(request):
+    #print request.user.id
+    return render(request,'userdetails/profile.html')
+
+
 def sample_view(request):
     current_user = request.user
     print current_user.username

@@ -23,7 +23,7 @@
               {% csrf_token %}
                 
               <p ><span class="fa fa-user"></span><input   name="username"  type="text"  Placeholder="Username" required></p>
-              <p><span class="fa fa-user-circle"></span><input   name="name"  type="text"  Placeholder="Name" required></p> 
+              <p><span class="fa fa-user-circle"></span><input   name="first_name"  type="text"  Placeholder="Name" required></p> 
               <p ><span class="fa fa-envelope"></span><input   name="email"  type="text"  Placeholder="Email" required></p> 
               <p><span class="fa fa-lock"></span><input   name="password1"  type="password"  Placeholder="Password" required></p>
               <p><span class="fa fa-lock"></span><input   name="password2"  type="password"  Placeholder="Confirm Password" required></p> 
@@ -45,7 +45,7 @@
                     </style>
                 <script>
                   $('#id_username').attr('placeholder', 'Username');
-                  $('#id_name').attr('placeholder','Name');
+                  $('#id_first_name').attr('placeholder','Name');
                   $('#id_email').attr('placeholder','Email');
                   $('#id_password1').attr('placeholder','Password');
                   $('#id_password2').attr('placeholder','Password Confirmation');

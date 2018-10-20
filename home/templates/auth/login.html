@@ -18,6 +18,10 @@
 <div class="middle">
       <div id="login">
 
+            {% if form.errors %}
+            <p style="color:maroon; font-size: 13px">Your username or password isn't correct. Please try again.</p>
+            {% endif %}
+
           <form method="post" class="form">
               {% csrf_token %}
               <p ><span class="fa fa-user"></span><input   name="username"  type="text"  Placeholder="Username" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
@@ -27,7 +31,7 @@
               <span style="width:48%; text-align:left;  display: inline-block;"><a class="small-text" href="#">Forgot
                   password?</a></span>
                   <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Sign In"></span>
-           
+              
                 <style>
                 label {
                   display: none;

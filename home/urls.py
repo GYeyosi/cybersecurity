@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login,{'template_name': 'auth/login.html'},name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
+    url(r'^profile/',views.profile, name='profile'),
     url(r'^learn/', include('learn.urls')),
     url(r'^practice/', include('practice.urls')),
     url(r'^add_articles/',views.add_articles, name='add_articles' ),
