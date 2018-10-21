@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['edu-cybersec.herokuapp.com','cybersec-edu.herokuapp.com', 'loc
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'learn.apps.LearnConfig',
-    'crispy_forms',
     'practice.apps.PracticeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'cybersecurity.urls'
@@ -136,4 +134,4 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

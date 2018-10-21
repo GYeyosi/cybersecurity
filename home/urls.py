@@ -24,8 +24,9 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^profile/',views.profile, name='profile'),
-    url(r'^learn/', include('learn.urls')),
-    url(r'^practice/', include('practice.urls')),
+    url(r'^learn/', views.learn,name="learn"),
+    url(r'^reversing/(?P<id>[0-9]+)$', views.reversing,name="reversing"),
+    url(r'^practice/', views.practice,name="practice"),
     url(r'^add_articles/',views.add_articles, name='add_articles' ),
     url(r'^shell/',views.shell, name='shell' ),
     # url(r'^user/',views.index, name='index' ), added as i changed redirect url after login

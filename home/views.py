@@ -7,6 +7,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import *
+from models import question,article
 
 # Create your views here.
 def index(request):
@@ -50,6 +51,19 @@ def shell(request):
         return HttpResponseRedirect('http://127.0.0.1:3000')
     else:
         return HttpResponseRedirect('/login')
+
+def practice(request):
+    questions=question.objects.all()
+    print questions
+    return render(request,'practice/practice.html',{'questions':questions})
+def learn(request):
+    return render(request,"learn/learn.html")
+def reversing(request,id):
+    articles=article.objects.all()
+    tag="learn/reversing/"
+    tag+=id+".html"
+    print tag
+    return render(request,tag,{'articles':articles})
 
 
 
