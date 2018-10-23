@@ -6,12 +6,15 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import *
 from .forms import *
-from models import question,article
+from models import *
+from django.contrib import *
+from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 def index(request):
-    return render(request,'index/index.html')
+    return render(request,'learn/learn.html')
 
 def signup(request):
     if request.method == 'POST':
@@ -33,6 +36,22 @@ def profile(request):
     #print request.user.id
     return render(request,'userdetails/profile.html')
 
+def changepassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            print "fff"
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('/profile')
+        else:
+            messages.error(request,('Please correct the error below.'))
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'changepassword/pass.html', {
+        'form': form
+}) 
 
 def sample_view(request):
     current_user = request.user
@@ -56,11 +75,58 @@ def practice(request):
     questions=question.objects.all()
     print questions
     return render(request,'practice/practice.html',{'questions':questions})
+
+
+    
 def learn(request):
-    return render(request,"learn/learn.html")
+    revarticles=reversingarticle.objects.all()[:1]
+    farticles=forensicsarticle.objects.all()[:1]
+    carticles=cryptoarticle.objects.all()[:1]
+    warticles=webarticle.objects.all()[:1]
+    barticles=binaryarticle.objects.all()[:1]
+    garticles=generalarticle.objects.all()[:1]
+    # for article in articles:
+    #     print article.articlename
+    return render(request,"learn/learn.html",{'rarticles':revarticles,'farticles':farticles,'carticles':carticles, 'warticles':warticles, 'barticles':barticles, 'garticles':garticles })
+
 def reversing(request,id):
-    articles=article.objects.all()
+    articles=reversingarticle.objects.all()
     tag="learn/reversing/"
+    tag+=id+".html"
+    print tag
+    return render(request,tag,{'articles':articles})
+
+def forensics(request,id):
+    articles=forensicsarticle.objects.all()
+    tag="learn/forensics/"
+    tag+=id+".html"
+    print tag
+    return render(request,tag,{'articles':articles})
+
+def crypto(request,id):
+    articles=cryptoarticle.objects.all()
+    tag="learn/crypto/"
+    tag+=id+".html"
+    print tag
+    return render(request,tag,{'articles':articles})
+
+def web(request,id):
+    articles=webarticle.objects.all()
+    tag="learn/web/"
+    tag+=id+".html"
+    print tag
+    return render(request,tag,{'articles':articles})
+
+def binary(request,id):
+    articles=binaryarticle.objects.all()
+    tag="learn/binary/"
+    tag+=id+".html"
+    print tag
+    return render(request,tag,{'articles':articles})
+
+def general(request,id):
+    articles=generalarticle.objects.all()
+    tag="learn/general/"
     tag+=id+".html"
     print tag
     return render(request,tag,{'articles':articles})

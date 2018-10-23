@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Learn | CodeBuddy</title>
+        <title>Learn | CyberSecurity</title>
         <link rel="icon" type="image/png" href="/images/favicon3.png">
         <script src="/static/learn/vendors/jquery/dist/jquery.min.js"></script>
         <script src="/static/learn/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -10,6 +10,35 @@
         <link rel='stylesheet' href='/static/learn/header.css' />
         <link rel='stylesheet' href='/static/learn/topics.css' />
         <script src='/static/learn/js/anal.js'></script>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <style>
+            
+            .vl {
+                border-left: 6px solid black;
+                height: 500px;
+                position: absolute;
+                left: 50%;
+                margin-left: -3px;
+                top: 0;
+            }
+
+            #c2{
+                float:right;
+            }
+            .top
+            {
+                background-color:grey;
+                margin-left:0px;
+                margin-top:0px;
+            }
+            .topcorner{
+                position:absolute;
+                top:8%;
+                right:2%;
+                left:53%;
+            }
+            </style>
     </head>
 
     <header>
@@ -20,11 +49,15 @@
     <a href="/" id="headerhome" class="homelabel"><i class="fa fa-home" style="cursor: pointer"></i> <label style="cursor: pointer">Home</label></a>
     <a href="/learn" id="headerlearn" class="learnlabel"><i class="fa fa-book" style="cursor: pointer"></i> <label style="cursor: pointer">Learn</label></a>
     <a href="/practice" id="headerpractice" class="problemslabel"><i class="fa fa-pencil" style="cursor: pointer"></i> <label style="cursor: pointer">Practice</label></a>
-    <a href="/contests" id="headercontests" class="contestslabel"><i class="fa fa-flag" style="cursor: pointer"></i> <label style="cursor: pointer">Contests</label></a>
-    <a href="/ranks/practice" id="headerrankings" class="rankingslabel"><i class="fa fa-trophy" style="cursor: pointer"></i> <label style="cursor: pointer">Rankings</label></a>
-    
+    <a href="/useshell" id="headercontests" class="contestslabel"><i class="fa fa-terminal" style="cursor: pointer"></i> <label style="cursor: pointer">Shell</label></a>
+    <a href="/add_articles" id="headerrankings" class="rankingslabel"><i class="fa fa-plus" style="cursor: pointer"></i> <label style="cursor: pointer">Add Articles</label></a>
+    {% if user.is_authenticated %}
+    <a data-toggle="modal" class="loginbutton" href="/profile">Profile</a>
+        <a data-toggle="modal" class="signupbutton" href="/logout">Logout</a>
+    {% else %}
         <a data-toggle="modal" class="loginbutton" href="/login">Log In</a>
         <a data-toggle="modal" class="signupbutton" href="/signup">Sign Up</a>
+    {% endif %}
     
 </div>
 
@@ -157,7 +190,7 @@
         
             <div class="effect3" id = "addNewTopic0">
                 <a href="/reversing/1">
-                    <img src="/static/learn/images/BlogImages/default0.jpg" id="image1" alt="Image Not Found" class = "addTopicImage">
+                    <img src="/static/learn/images/BlogImages/rev.jpeg" id="image1" alt="Image Not Found" class = "addTopicImage">
                     <div style="text-align: center; padding-top: 2%"><label class="textDisplay">Reversing</label></div>
                 </a>
             </div>
@@ -167,8 +200,8 @@
             </script>
         
             <div class="effect3" id = "addNewTopic1">
-                <a href="/learn/ComplexityAnalysis">
-                    <img src="/static/learn/images/BlogImages/default1.jpg" id="image2" alt="Image Not Found" class = "addTopicImage">
+                <a href="/forensics/1">
+                    <img src="/static/learn/images/BlogImages/forensics.jpg" id="image2" alt="Image Not Found" class = "addTopicImage">
                     
                     <div style="text-align: center; padding-top: 2%"><label class="textDisplay">Forensics</label></div>
                 </a>
@@ -179,8 +212,8 @@
             </script>
         
             <div class="effect3" id = "addNewTopic2">
-                <a href="/learn/SortingAlgorithms">
-                    <img src="/static/learn/images/BlogImages/default0.jpg" id="image3" alt="Image Not Found" class = "addTopicImage">
+                <a href="/crypto/1">
+                    <img src="/static/learn/images/BlogImages/crypto.jpg" id="image3" alt="Image Not Found" class = "addTopicImage">
                     
                     <div style="text-align: center; padding-top: 2%"><label class="textDisplay">Cryptography</label></div>
                 </a>
@@ -189,10 +222,10 @@
                 if ("visible" == "hidden")
                     document.getElementById('addNewTopic2').style.opacity = 0.5;
             </script>
-        
+                    </br>
             <div class="effect3" id = "addNewTopic3">
-                <a href="/learn/LinkedList">
-                    <img src="/static/learn/images/BlogImages/default1.jpg" id="image4" alt="Image Not Found" class = "addTopicImage">
+                <a href="/web/1">
+                    <img src="/static/learn/images/BlogImages/web.jpeg" id="image4" alt="Image Not Found" class = "addTopicImage">
                     
                     <div style="text-align: center; padding-top: 2%"><label class="textDisplay">Web Exploitation</label></div>
                 </a>
@@ -201,9 +234,10 @@
                 if ("visible" == "hidden")
                     document.getElementById('addNewTopic3').style.opacity = 0.5;
             </script>
+
         
             <div class="effect3" id = "addNewTopic4">
-                <a href="/learn/NumberTheory">
+                <a href="/binary/1">
                     <img src="/static/learn/images/BlogImages/default0.jpg" id="image5" alt="Image Not Found" class = "addTopicImage">
                     
                     <div style="text-align: center; padding-top: 2%"><label class="textDisplay">Binary Exploitation</label></div>
@@ -215,7 +249,7 @@
             </script>
         
             <div class="effect3" id = "addNewTopic5">
-                <a href="/learn/C++STL">
+                <a href="/general/1">
                     <img src="/static/learn/images/BlogImages/default1.jpg" id="image6" alt="Image Not Found" class = "addTopicImage">
                     
                     <div style="text-align: center; padding-top: 2%"><label class="textDisplay">General Skills</label></div>
@@ -225,7 +259,72 @@
                 if ("visible" == "hidden")
                     document.getElementById('addNewTopic5').style.opacity = 0.5;
             </script>
-        
+
+
+            <div class="vl"></div>  
+
+            <div  class = "topcorner top">
+                <div class="container_t left_t">
+                    <div class="content_t" style="border:2px solid black;">
+                            <h4 style="font-family:Raleway;color:black">Feb27</h4>
+                      <p style="font-family:Raleway;color:black;font-size:19px">
+                        {% for rarticle in rarticles %}
+                            {{ rarticle.articlename  }}
+                        {% endfor %} 
+                    </p>
+                    </div>
+                  </div>
+                  <div class="container_t left_t">
+                        <div class="content_t" style="border:2px solid black; >
+                                <h4 style="font-family:Raleway;color:black">Feb27</h4>
+                          <p style="font-family:Raleway;color:black;font-size:19px">
+                                {% for farticle in farticles %}
+                                    {{ farticle.articlename  }}
+                                {% endfor %} 
+                            </p>
+                        </div>
+                      </div>
+                      <div class="container_t left_t">
+                            <div class="content_t" style="border:2px solid black;>
+                                    <h4 style="font-family:Raleway;color:black">Feb27</h4>
+                              <p style="font-family:Raleway;color:black;font-size:19px">
+                                    {% for carticle in carticles %}
+                                        {{ carticle.articlename  }}
+                                    {% endfor %} 
+                                </p>
+                            </div>
+                          </div>
+                          <div class="container_t left_t">
+                                <div class="content_t" style="border:2px solid black; >
+                                        <h4 style="font-family:Raleway;color:black">Feb27</h4>
+                                  <p style="font-family:Raleway;color:black;font-size:19px">
+                                        {% for warticle in warticles %}
+                                            {{ warticle.articlename  }}
+                                        {% endfor %} 
+                                    </p>
+                                </div>
+                              </div>
+                              <div class="container_t left_t">
+                                    <div class="content_t" style="border:2px solid black;>
+                                            <h4 style="font-family:Raleway;color:black">Feb27</h4>
+                                      <p style="font-family:Raleway;color:black;font-size:19px">
+                                            {% for barticle in barticles %}
+                                                {{ barticle.articlename  }}
+                                            {% endfor %} 
+                                        </p>
+                                    </div>
+                                  </div>
+                                  <div class="container_t left_t">
+                                        <div class="content_t" style="border:2px solid black; >
+                                          <h4 style="font-family:Raleway;color:black">Feb27</h4>
+                                          <p style="font-family:Raleway;color:black;font-size:19px">
+                                                {% for garticle in garticles %}
+                                                    {{ garticle.articlename  }}
+                                                {% endfor %} 
+                                            </p>
+                                        </div>
+                                      </div>
+            </div>
             <!-- <div class="effect3" id = "addNewTopic6">
                 <a href="/learn/BasicDataStructures">
                     <img src="/static/learn/images/BlogImages/default0.jpg" id="image7" alt="Image Not Found" class = "addTopicImage">
